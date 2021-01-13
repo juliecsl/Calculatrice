@@ -8,166 +8,187 @@ nb1 = ""
 nb2 = ""
 type_calcul = ""
 
+
 #Fonctions
 
-def nombre(nb):
-    global nb1, nb2
 
-    if nb1 == "":
-        nb1 = nb
-    else:
-        nb2 = nb
+def assemble_chiffres(nb):
+    global nb1, nb2, type_calcul
+    if type_calcul == "":
+        nb1 += nb
+        zone_affichage.configure(text=nb1)
+    if type_calcul != "":
+        nb2 += nb
+        zone_affichage.configure(text=nb2)
 
 
-
-def zero():
+def zeros(event=None):
     zone_affichage.configure(text="0")
-    nombre(0)
+    assemble_chiffres("0")
 
 
-def un():
+def uns(event=None):
     zone_affichage.configure(text="1")
-    nombre(1)
+    assemble_chiffres("1")
 
-def deux():
+
+def deuxs(event=None):
     zone_affichage.configure(text="2")
-    nombre(2)
+    assemble_chiffres("2")
 
-
-def trois():
+def troiss(event=None):
     zone_affichage.configure(text="3")
-    nombre(3)
+    assemble_chiffres("3")
 
 
-def quatre():
+def quatres(event=None):
     zone_affichage.configure(text="4")
-    nombre(4)
+    assemble_chiffres("4")
 
-
-def cinq():
+def cinqs(event=None):
     zone_affichage.configure(text="5")
-    nombre(5)
+    assemble_chiffres("5")
 
 
-def six():
+def sixs(event=None):
     zone_affichage.configure(text="6")
-    nombre(6)
+    assemble_chiffres("6")
 
 
-def sept():
+def septs(event=None):
     zone_affichage.configure(text="7")
-    nombre(7)
+    assemble_chiffres("7")
 
 
-def huit():
+def huits(event=None):
     zone_affichage.configure(text= "8")
-    nombre(8)
+    assemble_chiffres("8")
 
 
-def neuf():
+def neufs(event=None):
     zone_affichage.configure(text = "9")
-    nombre(8)
+    assemble_chiffres("9")
 
 
-def plus():
+def pluss(event=None):
     global type_calcul
     zone_affichage.configure(text = "+")
     type_calcul=1
 
 
-def moins():
+def moinss(event=None):
     global type_calcul
     zone_affichage.configure(text = "-")
     type_calcul=2
 
 
-def fois():
+def foiss(event=None):
     global type_calcul
     zone_affichage.configure(text = "x")
     type_calcul=3
 
 
-def diviser():
+def divisers(event=None):
     global type_calcul
     zone_affichage.configure(text = "/")
     type_calcul=4
 
 
-def virgule():
+def virgules(event=None):
     zone_affichage.configure(text = ".")
+    assemble_chiffres(".")
 
-def egal():
-    global type_calcul
-    
-    float(nb1)
-    float(nb2)
-    
+def egals(event=None):
+    global type_calcul, nb1, nb2
+
+
     if type_calcul == 1:
-        total = nb1 + nb2
+        total = float(nb1) + float(nb2)
     elif type_calcul == 2:
-        total = nb1 - nb2
+        total = float(nb1) - float(nb2)
     elif type_calcul == 3:
-        total = nb1 * nb2
+        total = float(nb1) * float(nb2)
     elif type_calcul == 4:
-        total = nb1 / nb2
+        total = float(nb1) / float(nb2)
     
     zone_affichage.configure(text=total)
+
+    nb1 = ""
+    nb2 = ""
+    type_calcul = ""
+
 
 
 #Affichage
 
-zone_affichage = tk.Label(racine, text="test", bg="black", fg="white", width=5, height=5)
-zone_affichage.grid(column=2, row=0, columnspan=2)
+zone_affichage = tk.Label(racine, text="", bg="black", fg="white", width=20, height=5)
+zone_affichage.grid(column=0, row=0, columnspan=4)
 
-un = tk.Button(racine, text="1", width=5, height=5, bg="black", fg="white", command=un)
+un = tk.Button(racine, text="1", width=5, height=5, bg="black", fg="white", command=uns)
 un.grid(column=0, row=1)
 
-deux = tk.Button(racine, text="2", width=5, height=5, bg="black", fg="white", command=deux)
+deux = tk.Button(racine, text="2", width=5, height=5, bg="black", fg="white", command=deuxs)
 deux.grid(column=1, row=1)
 
-trois = tk.Button(racine, text="3", width=5, height=5, bg="black", fg="white", command=trois)
+trois = tk.Button(racine, text="3", width=5, height=5, bg="black", fg="white", command=troiss)
 trois.grid(column=2, row=1)
 
-quatre = tk.Button(racine, text="4", width=5, height=5, bg="black", fg="white", command=quatre)
+quatre = tk.Button(racine, text="4", width=5, height=5, bg="black", fg="white", command=quatres)
 quatre.grid(column=0, row=2)
 
-cinq = tk.Button(racine, text="5", width=5, height=5, bg="black", fg="white", command=cinq)
+cinq = tk.Button(racine, text="5", width=5, height=5, bg="black", fg="white", command=cinqs)
 cinq.grid(column=1, row=2)
 
-six = tk.Button(racine, text="6", width=5, height=5, bg="black", fg="white", command=six)
+six = tk.Button(racine, text="6", width=5, height=5, bg="black", fg="white", command=sixs)
 six.grid(column=2, row=2)
 
-sept = tk.Button(racine, text="7", width=5, height=5, bg="black", fg="white", command=sept)
+sept = tk.Button(racine, text="7", width=5, height=5, bg="black", fg="white", command=septs)
 sept.grid(column=0, row=3)
 
-huit = tk.Button(racine, text="8", width=5, height=5, bg="black", fg="white", command=huit)
+huit = tk.Button(racine, text="8", width=5, height=5, bg="black", fg="white", command=huits)
 huit.grid(column=1, row=3)
 
-neuf = tk.Button(racine, text="9", width=5, height=5, bg="black", fg="white", command=neuf)
+neuf = tk.Button(racine, text="9", width=5, height=5, bg="black", fg="white", command=neufs)
 neuf.grid(column=2, row=3)
 
-zero = tk.Button(racine, text="0", width=5, height=5, bg="black", fg="white", command=zero)
+zero = tk.Button(racine, text="0", width=5, height=5, bg="black", fg="white", command=zeros)
 zero.grid(column=1, row=4)
 
-plus = tk.Button(racine, text="+", width=5, height=5, bg="black", fg="white", command=plus)
+plus = tk.Button(racine, text="+", width=5, height=5, bg="black", fg="white", command=pluss)
 plus.grid(column=3, row=1)
 
-moins = tk.Button(racine, text="-", width=5, height=5, bg="black", fg="white", command=moins)
+moins = tk.Button(racine, text="-", width=5, height=5, bg="black", fg="white", command=moinss)
 moins.grid(column=3, row=2)
 
-fois = tk.Button(racine, text="x", width=5, height=5, bg="black", fg="white", command=fois)
+fois = tk.Button(racine, text="x", width=5, height=5, bg="black", fg="white", command=foiss)
 fois.grid(column=3, row=3)
 
-diviser = tk.Button(racine, text="/", width=5, height=5, bg="black", fg="white", command=diviser)
+diviser = tk.Button(racine, text="/", width=5, height=5, bg="black", fg="white", command=divisers)
 diviser.grid(column=3, row=4)
 
-virgule = tk.Button(racine, text=".", width=5, height=5, bg="black", fg="white", command=virgule)
+virgule = tk.Button(racine, text=".", width=5, height=5, bg="black", fg="white", command=virgules)
 virgule.grid(column=2, row=4)
 
-egal = tk.Button(racine, text="=", width=5, height=5, bg="black", fg="white", command=egal)
+egal = tk.Button(racine, text="=", width=5, height=5, bg="black", fg="white", command=egals)
 egal.grid(column=0, row=4)
 
 
+#Bind
+racine.bind("<KeyPress-1>", uns)
+racine.bind("<KeyPress-2>", deuxs)
+racine.bind("<KeyPress-3>", troiss)
+racine.bind("<KeyPress-4>", quatres)
+racine.bind("<KeyPress-5>", cinqs)
+racine.bind("<KeyPress-6>", sixs)
+racine.bind("<KeyPress-7>", septs)
+racine.bind("<KeyPress-8>", huits)
+racine.bind("<KeyPress-9>", neufs)
+racine.bind("<KeyPress-0>", zeros)
+racine.bind("<KeyPress-+>", pluss)
+racine.bind("<KeyPress-_>", moinss)
+racine.bind("<KeyPress-x>", foiss)
+racine.bind("<KeyPress-/>", divisers)
+racine.bind("<Return>", egals)
 
 
 
